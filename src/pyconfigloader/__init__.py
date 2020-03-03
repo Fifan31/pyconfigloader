@@ -10,7 +10,7 @@ from appdirs import AppDirs
 
 __author__ = 'Stéphan AIMÉ'
 __email__ = 'stephan.aime@gmail.com'
-__version__ = '0.1'
+__version__ = '0.1.1'
 
 
 # TODO Replace the following import by a plugin mechanism
@@ -30,6 +30,7 @@ try:
 except ImportError:
     JPROPERTIES_AVAILABLE = False
 
+logging.basicConfig(level=logging.DEBUG)
 LOG = logging.getLogger(__name__)
 
 SUPPORTED_EXT = sorted(['.json', '.yml', '.yaml', '.ini', '.properties', '.toml', '.env'])
@@ -135,7 +136,7 @@ class Configuration(attrdict.AttrDict):
 
         .. versionadded:: 1.0
         """
-        LOG.debug('Loading config from %s', obj)
+        LOG.info('Loading config from %s', obj)
         if isinstance(obj, str):
             if '.' in obj:
                 path, name = obj.rsplit('.', 1)
@@ -338,7 +339,7 @@ class Configuration(attrdict.AttrDict):
         if env_var in os.environ:
             self._update_from_file_path(os.environ[env_var], loader)
         else:
-            LOG.debug('Not loading config from %s; variable not set', env_var)
+            LOG.warning('Not loading config from %s; variable not set', env_var)
 
     def _update_from_file(self, file_path_or_obj, loader):
         if hasattr(file_path_or_obj, 'read'):
@@ -351,11 +352,11 @@ class Configuration(attrdict.AttrDict):
             with open(file_path) as file_obj:
                 self._update_from_file_obj(file_obj, loader)
         else:
-            LOG.debug('Not loading config from %s; file nonexistant', file_path)
+            LOG.warning('Not loading config from %s; file not found', file_path)
 
     def _update_from_file_obj(self, file_obj, loader):
         if hasattr(file_obj, 'name') and isinstance(file_obj.name, str):
-            LOG.debug('Loading config from %s', os.path.abspath(file_obj.name))
+            LOG.info('Loading config from %s', os.path.abspath(file_obj.name))
         _dict_merge(self, loader(file_obj))
         # self.update(loader(file_obj))
 
