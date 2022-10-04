@@ -350,13 +350,14 @@ class Configuration(attrdict.AttrDict):
     def _update_from_file_path(self, file_path, loader):
         if os.path.exists(file_path):
             with open(file_path) as file_obj:
+                LOG.info('Loading config from path %s', os.path.abspath(file_path))
                 self._update_from_file_obj(file_obj, loader)
         else:
             LOG.warning('Not loading config from %s; file not found', file_path)
 
     def _update_from_file_obj(self, file_obj, loader):
         if hasattr(file_obj, 'name') and isinstance(file_obj.name, str):
-            LOG.info('Loading config from %s', os.path.abspath(file_obj.name))
+            LOG.info('Loading config from file object %s', os.path.abspath(file_obj.name))
         _dict_merge(self, loader(file_obj))
         # self.update(loader(file_obj))
 
