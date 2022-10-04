@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 HERE = path.dirname(__file__)
 extras_require = {
-    'yaml':  ["PyYAML==5.1.1"],
+    'yaml':  ["PyYAML==6.0"],
     'toml': ["toml==0.10.0"],
     'properties': ["jproperties==2.0.0"]
 }
