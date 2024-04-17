@@ -20,6 +20,7 @@ repos:
       - id: ruff-format
       # Run the linter.
       - id: ruff
+        name: ruff-lint
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.901
     hooks:
@@ -31,3 +32,12 @@ repos:
           - types-toml
         args:
           - --ignore-missing-imports
+  - repo: local
+    hooks:
+    - id: pytest
+      name: pytest
+      entry: poetry run pytest -vl --junit-xml="pytest-report.xml"
+      language: system
+      types: [python]
+      pass_filenames: false
+      always_run: true
