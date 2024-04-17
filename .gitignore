@@ -108,3 +108,6 @@ venv.bak/
 .idea
 
 .vscode/
+/pylint-report.json
+/pytest-report.xml
+/ruff-lint-report.txt
