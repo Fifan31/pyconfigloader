@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyconfigloader"
-version = "0.1.2"
+version = "0.2.0"
 description = "Application config loader helper with multiple config file format supported"
 authors = ["saime <stephan.aime@gmail.com>"]
 license = "MIT"

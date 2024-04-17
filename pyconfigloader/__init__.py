@@ -13,7 +13,7 @@ from appdirs import AppDirs
 
 __author__ = "Stéphan AIMÉ"
 __email__ = "stephan.aime@gmail.com"
-__version__ = "0.1.2"
+__version__ = "0.2.0"
 
 # TODO Replace the following import by a plugin mechanism
 try:
