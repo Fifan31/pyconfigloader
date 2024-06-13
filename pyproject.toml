@@ -14,12 +14,13 @@ packages = [{ include = "pyconfigloader" },
 "Bug Tracker" = "https://github.com/Fifan31/pyconfigloader/issues"
 
 [tool.poetry.dependencies]
-python = "^3.9.0"
+python = "~3.12.0"
 appdirs = "^1.4.4"
 attrdict = "^2.0.1"
 toml = "^0.10.2"
 pyyaml = "^6.0.1"
 jproperties = "^2.1.1"
+dynaconf = "^3.2.5"
 
 [tool.poetry.group.dev]
 optional = true
@@ -27,12 +28,11 @@ optional = true
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.7"
 mypy = "^1.9.0"
-pre-commit = "^3.7.0"
 pylint = "^3.1.0"
 types-pyyaml = "^6.0.12.20240311"
 types-toml = "^0.10.8.20240310"
-pysqlite3 = "^0.5.2"
 bump2version = "^1.0.1"
+pre-commit = "^3.7.0"
 
 [tool.poetry.group.test]
 optional = true
