@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 from typing import Callable, Generator, Mapping, Optional, Union  # noqa: F401
 
-import attrdict
+import attrdictionary
 from appdirs import AppDirs
 
 __author__ = "Stéphan AIMÉ"
@@ -47,7 +47,7 @@ class ConfigurationError(Exception):
     """
 
 
-class Configuration(attrdict.AttrDict):
+class Configuration(attrdictionary.AttrDict):
     """
     Configuration class that gather all configuration items retrieved from common config file
     locations.
@@ -219,7 +219,7 @@ class Configuration(attrdict.AttrDict):
         def ini_loader_as_dict(file_path):  # noqa: ANN001, ANN202
             config = configparser.ConfigParser()
             config.read_file(file_path)
-            return attrdict.AttrDict(config._sections)
+            return attrdictionary.AttrDict(config._sections)
 
         return self._update_from_file(file_path_or_obj, ini_loader_as_dict)
 
